@@ -54,17 +54,30 @@ function App() {
           <>
             <div className="charts_container">
               <h3>Countries with a competition law</h3>
+              <div className="controls_container">
+                <div className="control_container">
+                  <span className="label">Select chapter on the map</span>
+                  {' '}
+                  <select>
+                    <option>Chapter 1</option>
+                    <option disabled="disabled">Chapter 2</option>
+                  </select>
+                </div>
+              </div>
               <DwChartContainer chart_id="MEBOF" />
             </div>
-            <div className="controls_container">
-              <div className="control_container">
-                <span className="label">Filter by country</span>
-                {' '}
-                <input type="text" onChange={(event) => changeCountry(event)} placeholder="start type a name of a country…" />
-              </div>
-              <div className="control_container">
-                <span className="label">Filter by category</span>
-                {
+            <hr />
+            <div className="table_container">
+              <h3>Competition law data</h3>
+              <div className="controls_container">
+                <div className="control_container">
+                  <span className="label">Filter by country</span>
+                  {' '}
+                  <input type="text" onChange={(event) => changeCountry(event)} placeholder="start type a name of a country…" />
+                </div>
+                <div className="control_container">
+                  <span className="label">Filter by category</span>
+                  {
                   Object.keys(data[0]).splice(1).map((row, i) => (
                     <div key={uuidv4()}>
                       <label htmlFor={row}>
@@ -74,12 +87,12 @@ function App() {
                     </div>
                   ))
                 }
+                </div>
               </div>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  {
+              <table>
+                <thead>
+                  <tr>
+                    {
                   Object.keys(data[0]).map((row, i) => {
                     if (checked[i] === true) {
                       return (<th key={uuidv4()}>{row}</th>);
@@ -87,31 +100,32 @@ function App() {
                     return false;
                   })
                 }
-                </tr>
-              </thead>
-              <tbody>
-                {data
-                  .filter(row => String(row[Object.keys(data[0])[0]])
-                    .toLowerCase()
-                    .includes(countrySearch.toLowerCase()))
-                  .map((row) => (
-                    <tr key={uuidv4()}>
-                      {Object.keys(data[0]).map((header, i) => (checked[i] ? (
-                        <td key={uuidv4()}>
-                          {String(row[header])
-                            .split('\\')
-                            .map((part, idx, arr) => (
-                              <React.Fragment key={uuidv4()}>
-                                {part}
-                                {idx < arr.length - 1 && <br />}
-                              </React.Fragment>
-                            ))}
-                        </td>
-                      ) : null))}
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data
+                    .filter(row => String(row[Object.keys(data[0])[0]])
+                      .toLowerCase()
+                      .includes(countrySearch.toLowerCase()))
+                    .map((row) => (
+                      <tr key={uuidv4()}>
+                        {Object.keys(data[0]).map((header, i) => (checked[i] ? (
+                          <td key={uuidv4()}>
+                            {String(row[header])
+                              .split('\\')
+                              .map((part, idx, arr) => (
+                                <React.Fragment key={uuidv4()}>
+                                  {part}
+                                  {idx < arr.length - 1 && <br />}
+                                </React.Fragment>
+                              ))}
+                          </td>
+                        ) : null))}
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           </>
           )
       }

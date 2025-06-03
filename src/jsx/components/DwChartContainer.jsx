@@ -24,7 +24,7 @@ function DwChartContainer(props) {
 
   return (
     <div className={`chart_container chart_container_${chart_id}`}>
-      <div className="parallax-container" style={{ opacity: (isVisible) ? '1' : '0', top: (isVisible) ? '0px' : '50px' }}>
+      <div className="" style={{ opacity: (isVisible) ? '1' : '1' }}>
         <div className="chart" ref={chartRef} />
       </div>
       <noscript><img src={`https://datawrapper.dwcdn.net/${chart_id}/full.png`} alt="" /></noscript>
