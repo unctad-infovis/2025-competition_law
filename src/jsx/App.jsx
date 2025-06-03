@@ -76,7 +76,7 @@ function App() {
                   <input type="text" onChange={(event) => changeCountry(event)} placeholder="start type a name of a country…" />
                 </div>
                 <div className="control_container">
-                  <span className="label">Filter by category</span>
+                  <div className="label">Filter by category</div>
                   {
                   Object.keys(data[0]).splice(1).map((row, i) => (
                     <div key={uuidv4()}>
