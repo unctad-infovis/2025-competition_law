@@ -1,0 +1,55 @@
+@import 'colors.less';
+
+#app-root-2025-competition_law .app {
+  box-sizing: border-box;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  max-width: 1200px;
+  padding: 5px;
+  .charts_container {
+    margin: 0 0 20px 0;
+  }
+  .controls_container {
+    .control_container {
+      margin: 0 0 20px 0;
+      .label {
+        font-weight: 600;
+
+      }
+      input[type="text"] {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  }
+  table {
+    border-collapse: collapse;
+    border-bottom: 2px solid #000;
+    thead {
+      tr {
+        border-bottom: 2px solid #000;
+        th {
+          padding: 8px;
+          text-align: left;
+          vertical-align: bottom;
+        }
+      }
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid #ccc;
+        &:nth-child(2n+1) {
+          td {
+            background-color: rgba(170, 160, 150, 0.1);
+          }
+        }
+        td {
+          border-left: 1px solid #ccc;
+          border-right: 1px solid #ccc;
+          padding: 8px;
+        }
+      }
+    }
+  }
+}
+
+@import 'basics.less';
